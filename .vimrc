@@ -6,7 +6,7 @@ filetype off
 " NeoBundle
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
 endif
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -16,6 +16,7 @@ NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
 
+call neobundle#end()
 
 " -------------------------------------------------------------------------
 " color scheme
@@ -85,6 +86,5 @@ set commentstring=\ #\ %s
 set foldlevel=0
 set clipboard+=unnamed
 syntax on
-
-
 filetype plugin indent on
+
