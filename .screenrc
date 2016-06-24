@@ -1,0 +1,3 @@
+escape ^Tt
+hardstatus alwayslastline "[%Y-%m-%d(%D) %c:%s] %`%-w%{=b bw}%n %t%{-}%+w $STY"
+termcapinfo xterm* ti@:te@
