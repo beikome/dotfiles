@@ -1,6 +1,11 @@
 set nocompatible
 filetype off
 
+" -------------------------------------------------------------------------
+" release autogroup in MyAutoCmd
+augroup MyAutoCmd
+  autocmd!
+  augroup END
 
 " -------------------------------------------------------------------------
 " NeoBundle
@@ -12,18 +17,42 @@ endif
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/syntastic'
 
 call neobundle#end()
 
 " -------------------------------------------------------------------------
 " color scheme
-set t_Co=256
-set background=dark
 colorscheme molokai
+set t_Co=256
+"let g:molokai_original = 1
+"let g:rehash256 = 1
+set background=dark
 
+" -------------------------------------------------------------------------
+" nerdtree
+let NERDTreeShowHidden = 1 " 隠しファイルをデフォルトで表示させる
+
+" デフォルトでNERDTreeを表示するがファイル名を指定して起動した時は表示しない         
+autocmd StdinReadPre * let s:std_in=1 
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" -------------------------------------------------------------------------
+" syntastic (syntax checker)
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+"let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 
 " -------------------------------------------------------------------------
 " indent
@@ -32,6 +61,21 @@ function! s:hooks.on_source(bundle)
   let g:indent_guides_guide_size = 1
   IndentGuidesEnable
 endfunction
+
+" -------------------------------------------------------------------------
+" template
+
+" テンプレート中に含まれる特定文字列を置き換える
+autocmd MyAutoCmd User plugin-template-loaded call s:template_keywords()
+function! s:template_keywords()
+    silent! %s/<+DATE+>/\=strftime('%Y-%m-%d')/g
+    silent! %s/<+FILENAME+>/\=expand('%:r')/g
+endfunction
+" テンプレート中に含まれる'<+CURSOR+>'にカーソルを移動
+autocmd MyAutoCmd User plugin-template-loaded
+    \   if search('<+CURSOR+>')
+    \ |   silent! execute 'normal! "_da>'
+    \ | endif
 
 " -------------------------------------------------------------------------
 set ignorecase
@@ -87,4 +131,6 @@ set foldlevel=0
 set clipboard+=unnamed
 syntax on
 filetype plugin indent on
+
+
 

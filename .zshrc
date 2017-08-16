@@ -17,7 +17,7 @@ colors
  
 # -------------------------------------
 # Prompt
- zsh_prompt_color='magenta'
+ zsh_prompt_color='blue'
 function prompt {
   if [ $UID -eq 0 ]; then
     local C_USERHOST="%{$bg[white]$fg[magenta]%}"
@@ -92,3 +92,6 @@ setopt extendedglob # 展開で^とか使う
 setopt numericglobsort # 数字展開は数値順
 setopt autoparamkeys # 補完後の:,)を削除
 fignore=(.o .swp lost+found) # 補完で無視する
+
+# -----------------------------------------------------
+source ~/.zshenv
