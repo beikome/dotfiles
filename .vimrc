@@ -26,11 +26,20 @@ call neobundle#end()
 
 " -------------------------------------------------------------------------
 " color scheme
-colorscheme molokai
+
+" kolor
+let g:kolor_italic=1 " Enable italic. Default: 1
+let g:kolor_bold=1 " Enable bold. Default: 1
+let g:kolor_underlined=0  " Enable underline. Default: 0
+let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+let g:kolor_inverted_matchparen=0 " White foreground 'MatchParen' color that might work better with some terminals. Default: 0
 set t_Co=256
-"let g:molokai_original = 1
-"let g:rehash256 = 1
-set background=dark
+colorscheme kolor       
+
+"molokai
+"colorscheme molokai
+"set t_Co=256
+"set background=dark
 
 " -------------------------------------------------------------------------
 " nerdtree
@@ -64,7 +73,6 @@ endfunction
 
 " -------------------------------------------------------------------------
 " template
-
 " テンプレート中に含まれる特定文字列を置き換える
 autocmd MyAutoCmd User plugin-template-loaded call s:template_keywords()
 function! s:template_keywords()
@@ -82,6 +90,8 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+set cursorline
+
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
@@ -121,7 +131,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-set backspace=indent,eol,start
 set incsearch
 set ignorecase
 set ruler
