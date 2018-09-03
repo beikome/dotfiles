@@ -49,7 +49,7 @@ compinit -u
 
 export LISTMAX=20
 
- # ----------------------------------------
+# ----------------------------------------
 # aliases
 setopt completealiases
 if [ $TERM = "cygwin" ]; then
@@ -82,8 +82,10 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default' menu select=1 # C-P/C-N
 # match upper case from lower case, search after -_./
 # dir => Dir, _t => some_tmp, long.c => longfilename.c
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[-_./]=** r:|=*'
-setopt nolistbeep # 曖昧補完でビープしない
+setopt no_beep # 補完候補がないときにビープ音をならさない
+setopt nolistbeep # 曖昧補完でビープ音をならさない
 setopt autolist # 補完時にリスト表示
 setopt listtypes
 unsetopt menucomplete # 最初から候補を循環する

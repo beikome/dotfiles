@@ -1,4 +1,3 @@
-set nocompatible
 filetype off
 
 " -------------------------------------------------------------------------
@@ -17,29 +16,27 @@ endif
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'tomasr/molokai'
 NeoBundle 'scrooloose/nerdtree'
-"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'w0rp/ale'
 
 call neobundle#end()
 
 " -------------------------------------------------------------------------
-" color scheme
+" syntax highlight 
+syntax on
 
+" -------------------------------------------------------------------------
+" color scheme
 " kolor
+colorscheme kolor       
 let g:kolor_italic=1 " Enable italic. Default: 1
 let g:kolor_bold=1 " Enable bold. Default: 1
 let g:kolor_underlined=0  " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
 let g:kolor_inverted_matchparen=0 " White foreground 'MatchParen' color that might work better with some terminals. Default: 0
 set t_Co=256
-colorscheme kolor       
-
-"molokai
-"colorscheme molokai
-"set t_Co=256
 "set background=dark
+
 
 " -------------------------------------------------------------------------
 " nerdtree
@@ -50,7 +47,11 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " -------------------------------------------------------------------------
-" syntastic (syntax checker)
+" asynchronous lint engine (syntax checker)
+
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 1
 
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -86,6 +87,9 @@ autocmd MyAutoCmd User plugin-template-loaded
     \ | endif
 
 " -------------------------------------------------------------------------
+
+syntax on
+
 set ignorecase
 set smartcase
 set incsearch
@@ -125,12 +129,12 @@ set novisualbell
 " python用設定
 set encoding=utf8 
 set paste " ペーストしたときのオートインデントを無効にする
+set tabstop=4
+set autoindent
 set expandtab " タブ入力をスペースに入れ替える
 set textwidth=0
-set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set autoindent
 set incsearch
 set ignorecase
 set ruler
@@ -138,8 +142,7 @@ set wildmenu
 set commentstring=\ #\ %s
 set foldlevel=0
 set clipboard+=unnamed
-syntax on
-filetype plugin indent on
 
+filetype plugin indent on
 
 
