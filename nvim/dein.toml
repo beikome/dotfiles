@@ -1,0 +1,52 @@
+# Shougo-san's plugins {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+# }}}
+
+# Common {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
+
+[[plugins]]
+repo = 'thinca/vim-template'
+# }}}
+
+# Filer {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+# }}}
+
+# Appearance {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'zeis/vim-kolor'
+# }}}
+
+# Run {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'w0rp/ale'
+# }}}

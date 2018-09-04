@@ -1,0 +1,80 @@
+# Shougo-san's plugins {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_source = ['denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+on_cmd = ['Unite']
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_ft = ['c', 'cpp']
+# }}}
+
+# Syntax {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['md', 'markdown']
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+# }}}
+
+# Complete {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = ['vim']
+
+[[plugins]]
+repo = 'ujihisa/neco-look'
+on_ft = ['vim', 'memo', 'txt']
+# }}}
+
+# C / C++ {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'vim-scripts/a.vim'
+on_ft = ['c', 'cpp']
+hook_source = '''
+nmap <silent> <C-t> :A<CR>
+'''
+
+[[plugins]]
+repo = 'zchee/libclang-python3'
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'rhysd/vim-clang-format'
+on_ft = ['c', 'cpp']
+hook_source = '''
+nmap [prefix]cf <Plug>(operator-clang-format)
+vmap [prefix]cf <Plug>(operator-clang-format)
+'''
+# }}}
+# Web {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_map = ['<Plug>(openbrowser-']
+# }}}
+
+# Unite {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'osyo-manga/unite-quickfix'
+on_source = ['unite.vim']
+
+[[plugins]]
+repo = 'osyo-manga/unite-quickrun_config'
+on_source = ['unite.vim']
+# }}}
+

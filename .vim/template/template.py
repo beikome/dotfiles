@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 #
-# Author:   chie
+# Author:   bebebe
 # Created:  <+DATE+>
 #
 
