@@ -50,6 +50,79 @@ endif
 " }}}
 
 " flags {{{
+" ====================================================================================================
+" Common
+" ---------------------------------------------------------------------------------------------------
+filetype plugin indent on
+syntax on
+
+" File
+" ---------------------------------------------------------------------------------------------------
+set autoread
+augroup vimrc-checktime
+    autocmd!
+    autocmd WinEnter * checktime
+augroup END
+
+set noautochdir
+set hidden
+set noswapfile
+set backupdir=>/tmp
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set noundofile
+
+augroup DeleteSpace
+    autocmd!
+    autocmd bufwritepre * :%s/\s\+$//ge
+augroup end
+
+" History
+" ---------------------------------------------------------------------------------------------------
+set history=1000
+
+" Indent
+" ---------------------------------------------------------------------------------------------------
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
+set autoindent
+set smartindent
+set shiftwidth=4
+set shiftround
+set paste
+
+augroup FileDependentIndentSettings
+    autocmd!
+    autocmd FileType html setlocal ts=2 sw=2
+augroup end
+
+" Bell
+" ---------------------------------------------------------------------------------------------------
+set t_vb=
+set novisualbell
+
+" Search
+" ---------------------------------------------------------------------------------------------------
+set wrapscan
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set wildmenu
+set wildmode=longest:full,full
+
+" Input Assist
+" ---------------------------------------------------------------------------------------------------
+set backspace=indent,eol,start
+set formatoptions=lmoq
+set whichwrap=b,s,h,l,<,>,[,]
+
+" No Swap File
+" ---------------------------------------------------------------------------------------------------
+set nowritebackup
+set nobackup
+set noswapfile
 
 " Clipboard
 " ----------------------------------------------------------------------------------------------------
@@ -58,7 +131,6 @@ set clipboard+=unnamed,unnamedplus
 " View
 " ----------------------------------------------------------------------------------------------------
 set showmatch
-set matchtime=3
 set matchpairs& matchpairs+=<:>
 set showcmd
 set showmode
@@ -165,40 +237,8 @@ vnoremap < <gv
 
 " }}}
 
-" deoplete {{{
-"====================================================================================================
-" Flags
-" ---------------------------------------------------------------------------------------------------
-let g:deoplete#enable_at_startup          = 1
-let g:deoplete#auto_complete_delay        = 0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_camel_case          = 1
-let g:deoplete#enable_ignore_case         = 1
-let g:deoplete#enable_smart_case          = 1
-let g:deoplete#enable_refresh_always      = 1
-let g:deoplete#file#enable_buffer_path    = 1
-let g:deoplete#max_list                   = 100
-
-call deoplete#custom#option('sources', {
-    \ 'cs' : ['omnisharp', 'buffer'],
-\ })
-" }}}
-
 " appearance {{{
 "====================================================================================================
-" Color scheme
-" ---------------------------------------------------------------------------------------------------
-command! MyColorScheme :call s:MyColorScheme()
-function! s:MyColorScheme()
-    let g:kolor_italic=1 " Enable italic. Default: 1
-    let g:kolor_bold=1 " Enable bold. Default: 1
-    let g:kolor_underlined=0  " Enable underline. Default: 0
-    let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
-    let g:kolor_inverted_matchparen=0 " White foreground 'MatchParen' color that might work better with some terminals. Default: 0
-    colorscheme kolor
-endfunction
-MyColorScheme
-
 " Line number
 " ---------------------------------------------------------------------------------------------------
 let s:default_updatetime   = &updatetime
@@ -253,6 +293,23 @@ augroup END
 " for C++11
 " ---------------------------------------------------------------------------------------------------
 let g:c_no_curly_error = 1
+
+" Color scheme
+" ---------------------------------------------------------------------------------------------------
+command! MyColorScheme :call s:MyColorScheme()
+function! s:MyColorScheme()
+	" base color scheme
+	let g:kolor_italic=1 " Enable italic. Default: 1
+    let g:kolor_bold=1 " Enable bold. Default: 1
+    let g:kolor_underlined=0  " Enable underline. Default: 0
+    let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+    let g:kolor_inverted_matchparen=0 " White foreground 'MatchParen' color that might work better with some terminals. Default: 0
+    colorscheme kolor
+
+	" highlight
+	hi Whitespace   ctermbg=none ctermfg=236  guibg=NONE    guifg=#0a0a0a
+endfunction
+MyColorScheme
 
 " }}}
 
@@ -320,88 +377,23 @@ let g:lightline = {
 \ }
 " }}}
 
-" flags {{{
-" ====================================================================================================
-" Common
+" deoplete {{{
+"====================================================================================================
+" Flags
 " ---------------------------------------------------------------------------------------------------
-filetype plugin indent on
-syntax on
+let g:deoplete#enable_at_startup          = 1
+let g:deoplete#auto_complete_delay        = 0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_camel_case          = 1
+let g:deoplete#enable_ignore_case         = 1
+let g:deoplete#enable_smart_case          = 1
+let g:deoplete#enable_refresh_always      = 1
+let g:deoplete#file#enable_buffer_path    = 1
+let g:deoplete#max_list                   = 100
 
-" File
-" ---------------------------------------------------------------------------------------------------
-set autoread
-augroup vimrc-checktime
-    autocmd!
-    autocmd WinEnter * checktime
-augroup END
-
-set noautochdir
-set hidden
-set noswapfile
-set backupdir=>/tmp
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set noundofile
-
-augroup DeleteSpace
-    autocmd!
-    autocmd bufwritepre * :%s/\s\+$//ge
-augroup end
-
-" History
-" ---------------------------------------------------------------------------------------------------
-set history=1000
-
-" Indent
-" ---------------------------------------------------------------------------------------------------
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=0
-set autoindent
-set smartindent
-set shiftwidth=4
-set shiftround
-set paste
-
-augroup FileDependentIndentSettings
-    autocmd!
-    autocmd FileType html setlocal ts=2 sw=2
-augroup end plugin indent on
-syntax on
-
-" Bell
-" ---------------------------------------------------------------------------------------------------
-set t_vb=
-set novisualbell
-
-" Search
-" ---------------------------------------------------------------------------------------------------
-set wrapscan
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch
-set wildmenu
-set wildmode=longest:full,full
-
-" Input Assist
-" ---------------------------------------------------------------------------------------------------
-set backspace=indent,eol,start
-set formatoptions=lmoq
-set whichwrap=b,s,h,l,<,>,[,]
-
-" No Swap File
-" ---------------------------------------------------------------------------------------------------
-set nowritebackup
-set nobackup
-set noswapfile
-
-" NERDTree {{{
-" ====================================================================================================
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-
+call deoplete#custom#option('sources', {
+    \ 'cs' : ['omnisharp', 'buffer'],
+\ })
 " }}}
 
 " ale {{{
@@ -426,3 +418,12 @@ autocmd User plugin-template-loaded
 \ |   silent! execute 'normal! "_da>'
 \ | endif
 " }}}
+
+" NERDTree {{{
+" ====================================================================================================
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+" }}}
+
