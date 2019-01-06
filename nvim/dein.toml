@@ -10,6 +10,13 @@ repo = 'Shougo/denite.nvim'
 repo = 'Shougo/deoplete.nvim'
 
 [[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+hook_add = '''
+    let g:deoplete#sources#jedi#python_path = 'usr/bin/python'
+'''
+
+[[plugins]]
 repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
