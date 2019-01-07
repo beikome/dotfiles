@@ -86,11 +86,9 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
-set autoindent
 set smartindent
 set shiftwidth=4
 set shiftround
-set paste
 
 augroup FileDependentIndentSettings
     autocmd!
@@ -382,18 +380,20 @@ let g:lightline = {
 " Flags
 " ---------------------------------------------------------------------------------------------------
 let g:deoplete#enable_at_startup          = 1
-let g:deoplete#auto_complete_delay        = 0
 let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#auto_complete_delay        = 0
 let g:deoplete#enable_camel_case          = 1
 let g:deoplete#enable_ignore_case         = 1
 let g:deoplete#enable_smart_case          = 1
 let g:deoplete#enable_refresh_always      = 1
 let g:deoplete#file#enable_buffer_path    = 1
-let g:deoplete#max_list                   = 100
+let g:deoplete#max_list                   = 1000
 
 call deoplete#custom#option('sources', {
     \ 'cs' : ['omnisharp', 'buffer'],
 \ })
+
+call deoplete#enable()
 " }}}
 
 " ale {{{
@@ -426,4 +426,3 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " }}}
-
