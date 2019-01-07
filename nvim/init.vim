@@ -297,12 +297,13 @@ let g:c_no_curly_error = 1
 command! MyColorScheme :call s:MyColorScheme()
 function! s:MyColorScheme()
 	" base color scheme
-	let g:kolor_italic=1 " Enable italic. Default: 1
-    let g:kolor_bold=1 " Enable bold. Default: 1
-    let g:kolor_underlined=0  " Enable underline. Default: 0
-    let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
-    let g:kolor_inverted_matchparen=0 " White foreground 'MatchParen' color that might work better with some terminals. Default: 0
-    colorscheme kolor
+	"let g:kolor_italic=1 " Enable italic. Default: 1
+    "let g:kolor_bold=1 " Enable bold. Default: 1
+    "let g:kolor_underlined=0  " Enable underline. Default: 0
+    "let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+    "let g:kolor_inverted_matchparen=0 " White foreground 'MatchParen' color that might work better with some terminals. Default: 0
+    "colorscheme kolor
+    colorscheme iceberg
 
 	" highlight
 	hi Whitespace   ctermbg=none ctermfg=236  guibg=NONE    guifg=#0a0a0a
