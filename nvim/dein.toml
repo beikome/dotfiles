@@ -55,6 +55,10 @@ repo = 'scrooloose/nerdtree'
 # ---------------------------------------------------------------------------------------------------
 [[plugins]]
 repo = 'zeis/vim-kolor'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
 # }}}
 
 # Run {{{

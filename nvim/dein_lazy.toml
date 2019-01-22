@@ -50,7 +50,15 @@ on_ft = ['c', 'cpp']
 
 [[plugins]]
 repo = 'zchee/deoplete-clang'
-on_ft = ['c', 'cpp']
+on_ft = ['c', 'cpp', 'cmake']
+hook_source = '''
+    if dein#util#_is_mac()
+    else
+        let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
+        let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8/include/'
+    endif
+'''
+depends = ['deoplete.nvim']
 
 [[plugins]]
 repo = 'rhysd/vim-clang-format'

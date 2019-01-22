@@ -2,19 +2,6 @@
 autoload colors
 colors
 
-# Here are the colours from Textmate's Monokai theme:
-#
-# Black: 0, 0, 0
-# Red: 229, 34, 34
-# Green: 166, 227, 45
-# Yellow: 252, 149, 30
-# Blue: 196, 141, 255
-# Magenta: 250, 37, 115
-# Cyan: 103, 217, 240
-# White: 242, 242, 242
-#
-# Thanks to Steve Losh: http://stevelosh.com/blog/2009/03/candy-colored-terminal/
-
 # -------------------------------------
 # Prompt
  zsh_prompt_color='blue'
