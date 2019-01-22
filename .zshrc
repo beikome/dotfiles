@@ -14,18 +14,18 @@ colors
 # White: 242, 242, 242
 #
 # Thanks to Steve Losh: http://stevelosh.com/blog/2009/03/candy-colored-terminal/
- 
+
 # -------------------------------------
 # Prompt
  zsh_prompt_color='blue'
 function prompt {
-  if [ $UID -eq 0 ]; then
-    local C_USERHOST="%{$bg[white]$fg[magenta]%}"
-    local C_PROMPT="%{$fg[magenta]%}"
-  else
-    local C_USERHOST="%{$bg[black]$fg[$zsh_prompt_color]%}"
-    local C_PROMPT="%{$fg[$zsh_prompt_color]%}"
-  fi
+  #if [ $UID -eq 0 ]; then
+  #  local C_USERHOST="%{$bg[white]$fg[magenta]%}"
+  #  local C_PROMPT="%{$fg[magenta]%}"
+  #else
+  local C_USERHOST="%{$bg[black]$fg[$zsh_prompt_color]%}"
+  local C_PROMPT="%{$fg[$zsh_prompt_color]%}"
+  #fi
   local C_PRE="%{$reset_color%}%{$fg[$zsh_prompt_color]%}"
   local C_CMD="%{$reset_color%}%{$fg[white]%}"
   local C_RIGHT="%{$bg[black]%}%{$fg[white]%}"
