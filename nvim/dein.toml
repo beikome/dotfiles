@@ -13,11 +13,7 @@ repo = 'Shougo/deoplete.nvim'
 repo = 'zchee/deoplete-jedi'
 on_ft = 'python'
 hook_add = '''
- if has('mac')
-    let g:deoplete#sources#jedi#python_path = '/usr/bin/python'
- elseif has('unix')
     let g:deoplete#sources#jedi#python_path = $HOME . '/.pyenv/shims/python'
- endif
 '''
 
 [[plugins]]
@@ -42,7 +38,19 @@ repo = 'itchyny/vim-cursorword'
 
 [[plugins]]
 repo = 'thinca/vim-template'
+
 # }}}
+
+# Complete {{{
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+hook_add = '''
+    let g:deoplete#sources#jedi#python_path = '/Users/chie/.pyenv/shims/python'
+'''
+
+#}}}
 
 # Filer {{{
 # ---------------------------------------------------------------------------------------------------
@@ -75,3 +83,22 @@ repo = 'w0rp/ale'
 [[plugins]]
 repo = 'cocopon/pgmnt.vim'
 # }}}
+
+# Create ColorScheme {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'cocopon/svss.vim'
+
+[[plugins]]
+repo = 'cocopon/pgmnt.vim'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'cocopon/colorswatch.vim'
+
+[[plugins]]
+repo = 'beikome/cosme.vim'
+
+#}}}

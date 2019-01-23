@@ -6,7 +6,6 @@ set shellslash
 
 "  os / neovim / screen {{{
 " ====================================================================================================
- let s:is_win = has('win32') || has('win64')
  let s:is_mac = has('mac')
  let s:is_linux = !s:is_mac && has('unix')
  let s:is_nvim = has('nvim')
@@ -137,11 +136,6 @@ set nowrap
 set ruler
 set showbreak=>>
 set list
-if s:is_win
-    set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
-else
-    set listchars=tab:▸\ ,trail:･,extends:»,precedes:«,nbsp:%
-endif
 set notitle
 set scrolloff=5
 set pumheight=10
@@ -186,6 +180,10 @@ endif
 if exists('+guicursor')
     set guicursor&
     set guicursor=a:blinkwait2000-blinkon1000-blinkoff500
+endif
+
+if has('nvim')
+    set termguicolors
 endif
 
 " }}}
@@ -236,7 +234,6 @@ vnoremap < <gv
 " }}}
 
 " appearance {{{
-"====================================================================================================
 " for C++11
 " ---------------------------------------------------------------------------------------------------
 let g:c_no_curly_error = 1
@@ -254,6 +251,7 @@ endif
 
 command! MyColorScheme :call s:MyColorScheme()
 function! s:MyColorScheme()
+	" base color scheme
     colorscheme cosme
 
 	" highlight
@@ -378,3 +376,5 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " }}}
+"
+

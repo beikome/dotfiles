@@ -2,28 +2,17 @@
 autoload colors
 colors
 
-#
-# Black: 12, 12, 12
-# Red: 215, 135, 135
-# Green: 175, 215, 135
-# Yellow: 247, 247, 175
-# Blue: 135, 175, 215
-# Magenta: 215, 175, 215
-# Cyan: 175, 215, 215
-# White: 230, 230, 230
-#
- 
 # -------------------------------------
 # Prompt
  zsh_prompt_color='blue'
 function prompt {
-  if [ $UID -eq 0 ]; then
-    local C_USERHOST="%{$bg[white]$fg[magenta]%}"
-    local C_PROMPT="%{$fg[magenta]%}"
-  else
-    local C_USERHOST="%{$bg[black]$fg[$zsh_prompt_color]%}"
-    local C_PROMPT="%{$fg[$zsh_prompt_color]%}"
-  fi
+  #if [ $UID -eq 0 ]; then
+  #  local C_USERHOST="%{$bg[white]$fg[magenta]%}"
+  #  local C_PROMPT="%{$fg[magenta]%}"
+  #else
+  local C_USERHOST="%{$bg[black]$fg[$zsh_prompt_color]%}"
+  local C_PROMPT="%{$fg[$zsh_prompt_color]%}"
+  #fi
   local C_PRE="%{$reset_color%}%{$fg[$zsh_prompt_color]%}"
   local C_CMD="%{$reset_color%}%{$fg[white]%}"
   local C_RIGHT="%{$bg[black]%}%{$fg[white]%}"
