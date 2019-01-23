@@ -1,16 +1,16 @@
 " init {{{
 " ====================================================================================================
-set nocompatible
 set shellslash
 
 " }}}
 
-"  os / neovim {{{
+"  os / neovim / screen {{{
 " ====================================================================================================
  let s:is_win = has('win32') || has('win64')
  let s:is_mac = has('mac')
  let s:is_linux = !s:is_mac && has('unix')
  let s:is_nvim = has('nvim')
+ let s:is_screen = $TERM == 'screen-256color'
  let s:nvim_dir = expand('~/.config/nvim')
 
 " }}}
@@ -237,73 +237,24 @@ vnoremap < <gv
 
 " appearance {{{
 "====================================================================================================
-" Line number
-" ---------------------------------------------------------------------------------------------------
-let s:default_updatetime   = &updatetime
-let s:immediate_updatetime = 10
-
-function! s:CursorLineNrColorDefault()
-    if &updatetime == s:immediate_updatetime
-        let &updatetime = s:default_updatetime
-    endif
-    hi CursorLineNr ctermfg=33 guifg=#268bd2
-    hi CursorLine   cterm=none gui=none
-    hi Cursor       gui=inverse,bold
-endfunction
-
-function! s:CursorLineNrColorInsert(mode)
-    if a:mode == 'i'
-        hi CursorLineNr ctermfg=64 guifg=#859900
-        hi CursorLine   cterm=underline gui=underline
-    elseif a:mode == 'r'
-        hi CursorLineNr ctermfg=124 guifg=#ff0000
-        hi CursorLine  cterm=underline gui=undercurl
-    elseif a:mode == 'replace-one-character'
-        let &updatetime = s:immediate_updatetime
-        hi CursorLineNr ctermfg=124 guifg=#ff0000
-        hi CursorLine   cterm=underline gui=none
-        hi Cursor       guifg=#ff0000 gui=inverse
-    endif
-endfunction
-
-function! s:CursorLineNrColorVisual()
-    let &updatetime = s:immediate_updatetime
-    hi CursorLineNr ctermfg=61 guifg=#6c71c4
-    hi CursorLine   cterm=none gui=none
-    return ''
-endfunction
-
-vnoremap <silent> <expr> <SID>(CursorLineNrColorVisual)  <SID>CursorLineNrColorVisual()
-" MEMO: need 'lh' to fire CursorMoved event to update highlight..., not cool.
-nnoremap <silent> <script> v v<SID>(CursorLineNrColorVisual)lh
-nnoremap <silent> <script> V V<SID>(CursorLineNrColorVisual)lh
-nnoremap <silent> <script> <C-v> <C-v><SID>(CursorLineNrColorVisual)lh
-nnoremap <silent> r :call <SID>CursorLineNrColorInsert('replace-one-character')<CR>r
-
-augroup ChangeLineNumber
-    autocmd!
-    autocmd VimEnter    * call s:CursorLineNrColorDefault()
-    autocmd InsertEnter * call s:CursorLineNrColorInsert(v:insertmode)
-    autocmd InsertLeave * call s:CursorLineNrColorDefault()
-    autocmd CursorHold  * call s:CursorLineNrColorDefault()
-augroup END
-
 " for C++11
 " ---------------------------------------------------------------------------------------------------
 let g:c_no_curly_error = 1
 
 " Color scheme
 " ---------------------------------------------------------------------------------------------------
+
+if s:is_nvim && s:is_screen == 0
+    set termguicolors
+else
+    set notermguicolors
+endif
+
+
+
 command! MyColorScheme :call s:MyColorScheme()
 function! s:MyColorScheme()
-	" base color scheme
-	"let g:kolor_italic=1 " Enable italic. Default: 1
-    "let g:kolor_bold=1 " Enable bold. Default: 1
-    "let g:kolor_underlined=0  " Enable underline. Default: 0
-    "let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
-    "let g:kolor_inverted_matchparen=0 " White foreground 'MatchParen' color that might work better with some terminals. Default: 0
-    "colorscheme kolor
-    colorscheme iceberg
+    colorscheme cosme
 
 	" highlight
 	hi Whitespace   ctermbg=none ctermfg=236  guibg=NONE    guifg=#0a0a0a
