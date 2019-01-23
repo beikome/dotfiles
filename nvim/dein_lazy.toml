@@ -52,8 +52,10 @@ on_ft = ['c', 'cpp']
 repo = 'zchee/deoplete-clang'
 on_ft = ['c', 'cpp', 'cmake']
 hook_source = '''
-    if dein#util#_is_mac()
-    else
+    if has('mac')
+        let g:deoplete#sources#clang#libclnag_path = ''
+        let g:deoplete#sources#clang#clang_header = ''
+    elseif has('unix')
         let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
         let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8/include/'
     endif
