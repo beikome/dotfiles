@@ -135,7 +135,7 @@ set number
 set nowrap
 set ruler
 set showbreak=>>
-set list
+set list lcs=tab:¦_
 set notitle
 set scrolloff=5
 set pumheight=10
@@ -255,7 +255,7 @@ function! s:MyColorScheme()
     colorscheme cosme
 
 	" highlight
-	hi Whitespace   ctermbg=none ctermfg=236  guibg=NONE    guifg=#0a0a0a
+    "hi Whitespace   ctermbg=none ctermfg=230  guibg=NONE    guifg=#0a0a0a
 endfunction
 MyColorScheme
 
