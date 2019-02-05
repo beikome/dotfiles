@@ -77,11 +77,26 @@ nmap [prefix]cf <Plug>(operator-clang-format)
 vmap [prefix]cf <Plug>(operator-clang-format)
 '''
 # }}}
+
 # Web {{{
 # ---------------------------------------------------------------------------------------------------
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_map = ['<Plug>(openbrowser-']
+# }}}
+
+
+# Python {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugin]]
+repo = "hynek/vim-python-pep8-indent"
+on_ft = "python"
+
+[[plugin]]
+repo = "hachibeeDI/python_hl_lvar.vim"
+on_ft = "python"
+
+
 # }}}
 
 # Unite {{{
