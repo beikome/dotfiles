@@ -9,7 +9,6 @@ set shellslash
  let s:is_mac = has('mac')
  let s:is_linux = !s:is_mac && has('unix')
  let s:is_nvim = has('nvim')
- let s:is_screen = $TERM == 'screen-256color'
  let s:nvim_dir = expand('~/.config/nvim')
 
 " }}}
@@ -183,8 +182,11 @@ if exists('+guicursor')
 endif
 
 if has('nvim')
-    set termguicolors
+    set notermguicolors
 endif
+
+" disable Background color erase function
+set t_ut=
 
 " }}}
 
@@ -241,11 +243,11 @@ let g:c_no_curly_error = 1
 " Color scheme
 " ---------------------------------------------------------------------------------------------------
 
-if s:is_nvim && s:is_screen == 0
-    set termguicolors
-else
-    set notermguicolors
-endif
+"if s:is_nvim && s:is_screen == 0
+"    set termguicolors
+"else
+set notermguicolors
+"endif
 
 
 
