@@ -269,63 +269,65 @@ let g:unite_force_overwrite_statusline    = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
-let g:lightline = {
-    \ 'colorscheme': 'tsubakumi',
-    \ 'enable' : {
-        \ 'statusline' : 1,
-        \ 'tabline'    : 0
-    \ },
-    \ 'mode_map' : {
-        \ 'n'      : 'N',
-        \ 'i'      : 'I',
-        \ 'R'      : 'R',
-        \ 'v'      : 'V',
-        \ 'V'      : 'VL',
-        \ 'c'      : 'C',
-        \ "\<C-v>" : 'VB',
-        \ 's'      : 'S',
-        \ 'S'      : 'SL',
-        \ "\<C-s>" : 'SB',
-        \ '?'      : '  '
-    \ },
-    \ 'active' : {
-        \ 'left' : [
-            \ [ 'mode' ],
-            \ [ 'paste', 'fugitive', 'filename', 'quickrun', 'quickfix' ],
-        \ ],
-        \ 'right' : [
-            \ [ 'percent' ],
-            \ [ 'lineinfo' ],
-            \ [ 'fileformat', 'fileencoding', 'filetype' ]
-        \ ]
-    \ },
-    \ 'separator' : {
-        \ 'left'  : '⮀',
-        \ 'right' : '⮂'
-    \ },
-    \ 'subseparator' : {
-        \ 'left'  : '⮁',
-        \ 'right' : '⮃'
-    \ },
-    \ 'component' : {
-        \ 'lineinfo' : '⭡ %3l:%-1v',
-        \ 'percent'  : '%2p%%',
-    \ },
-    \ 'component_function': {
-        \ 'mode'         : 'LightlineComponentFuncMode',
-        \ 'filename'     : 'LightlineComponentFuncFilename',
-        \ 'fileformat'   : 'LightlineComponentFuncFileFormat',
-        \ 'filetype'     : 'LightlineComponentFuncFileType',
-        \ 'fileencoding' : 'LightlineComponentFuncFileEncoding',
-        \ 'quickrun'     : 'LightlineComponentFuncQuickrun',
-        \ 'fugitive'     : 'LightlineComponentFuncFugitive',
-    \ },
-    \ 'tab' : {
-        \ 'active'   : ['tabnum', 'filename', 'modified' ],
-        \ 'inactive' : ['tabnum', 'filename', 'modified' ],
-    \ },
-\ }
 " }}}
+let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'LightlineModified',
+        \   'readonly': 'LightlineReadonly',
+        \   'fugitive': 'LightlineFugitive',
+        \   'filename': 'LightlineFilename',
+        \   'fileformat': 'LightlineFileformat',
+        \   'filetype': 'LightlineFiletype',
+        \   'fileencoding': 'LightlineFileencoding',
+        \   'mode': 'LightlineMode'
+        \ }
+        \ }
+
+function! LightlineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+    return fugitive#head()
+  else
+    return ''
+  endif
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 " deoplete {{{
 "====================================================================================================
