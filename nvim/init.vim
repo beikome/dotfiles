@@ -12,8 +12,6 @@ set shellslash
  let s:nvim_dir = expand('~/.config/nvim')
 
 " }}}
-" // TODO atode chanto suru
-let python_highlight_all=1
 
 " dein {{{
 "

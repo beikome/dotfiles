@@ -55,6 +55,20 @@ repo = 'scrooloose/nerdtree'
 # Appearance {{{
 # ---------------------------------------------------------------------------------------------------
 [[plugins]]
+repo = 'vim-airline/vim-airline'
+
+hook_add = '''
+let g:airline_powerline_fonts = 1
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+# }}}
+
+# Color scheme {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
 repo = 'zeis/vim-kolor'
 
 [[plugins]]
