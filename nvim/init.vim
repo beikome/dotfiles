@@ -233,6 +233,11 @@ nnoremap < <<
 vnoremap > >gv
 vnoremap < <gv
 
+" Popup
+" ---------------------------------------------------------------------------------------------------
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
 " }}}
 
 " appearance {{{
@@ -271,7 +276,7 @@ let g:vimshell_force_overwrite_statusline = 0
 
 " }}}
 let g:lightline = {
-        \ 'colorscheme': 'wombat',
+        \ 'colorscheme': 'cosme',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]

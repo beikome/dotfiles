@@ -83,4 +83,10 @@ setopt autoparamkeys # 補完後の:,)を削除
 fignore=(.o .swp lost+found) # 補完で無視する
 
 # -----------------------------------------------------
+
+# for vim
+set KEYTIMEOUT=1
+
 source ~/.zshenv
+
+

@@ -73,19 +73,32 @@ repo = 'sonjapeterson/1989.vim'
 [[plugins]]
 repo = 'beikome/cosme.vim'
 
+[[plugins]]
+repo = 'sonph/onehalf'
+
+[[plugins]]
+repo = 'jnurmine/Zenburn'
+
+[[plugins]]
+repo = 'dracula/vim'
+
+[[plugins]]
+repo = 'NLKNguyen/papercolor-theme'
+
+[[plugins]]
+repo = 'chriskempson/base16-vim'
+# }}}
+
+# Linter {{{
+# ---------------------------------------------------------------------------------------------------
+[[plugins]]
+repo = 'w0rp/ale'
 # }}}
 
 # Run {{{
 # ---------------------------------------------------------------------------------------------------
 [[plugins]]
-repo = 'w0rp/ale'
-
-# }}}
-
-# ColorScheme {{{
-# ---------------------------------------------------------------------------------------------------
-[[plugins]]
-repo = 'cocopon/pgmnt.vim'
+repo = 'thinca/vim-quickrun'
 # }}}
 
 # Create ColorScheme {{{
