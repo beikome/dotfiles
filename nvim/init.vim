@@ -334,27 +334,6 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-" deoplete {{{
-"====================================================================================================
-" Flags
-" ---------------------------------------------------------------------------------------------------
-let g:deoplete#enable_at_startup          = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#auto_complete_delay        = 0
-let g:deoplete#enable_camel_case          = 1
-let g:deoplete#enable_ignore_case         = 1
-let g:deoplete#enable_smart_case          = 1
-let g:deoplete#enable_refresh_always      = 1
-let g:deoplete#file#enable_buffer_path    = 1
-let g:deoplete#max_list                   = 1000
-
-call deoplete#custom#option('sources', {
-    \ 'cs' : ['omnisharp', 'buffer'],
-\ })
-
-call deoplete#enable()
-" }}}
-
 " ale {{{
 " ====================================================================================================
 let g:ale_lint_on_enter = 0

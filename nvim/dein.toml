@@ -7,14 +7,7 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-on_ft = 'python'
-hook_add = '''
-    let g:deoplete#sources#jedi#python_path = $HOME . '/.pyenv/shims/python'
-'''
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
@@ -41,10 +34,6 @@ repo = 'thinca/vim-template'
 
 # }}}
 
-# Complete {{{
-
-
-#}}}
 
 # Filer {{{
 # ---------------------------------------------------------------------------------------------------
