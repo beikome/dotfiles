@@ -98,4 +98,8 @@ repo = 'cocopon/svss.vim'
 [[plugins]]
 repo = 'cocopon/pgmnt.vim'
 
+[[plugins]]
+repo = 'gko/vim-coloresque'
+
+
 #}}}
