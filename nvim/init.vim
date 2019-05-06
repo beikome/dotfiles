@@ -6,10 +6,10 @@ set shellslash
 
 "  os / neovim / screen {{{
 " ====================================================================================================
- let s:is_mac = has('mac')
- let s:is_linux = !s:is_mac && has('unix')
- let s:is_nvim = has('nvim')
- let s:nvim_dir = expand('~/.config/nvim')
+let s:is_mac = has('mac')
+let s:is_linux = !s:is_mac && has('unix')
+let s:is_nvim = has('nvim')
+let s:nvim_dir = expand('~/.config/nvim')
 
 " }}}
 
@@ -258,11 +258,8 @@ set notermguicolors
 
 command! MyColorScheme :call s:MyColorScheme()
 function! s:MyColorScheme()
-	" base color scheme
-    colorscheme cosme
-
-	" highlight
-    "hi Whitespace   ctermbg=none ctermfg=230  guibg=NONE    guifg=#0a0a0a
+  " base color scheme
+  colorscheme cosme
 endfunction
 MyColorScheme
 
@@ -274,7 +271,6 @@ let g:unite_force_overwrite_statusline    = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
-" }}}
 let g:lightline = {
         \ 'colorscheme': 'cosme',
         \ 'mode_map': {'c': 'NORMAL'},
@@ -334,6 +330,12 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+" }}}
+
+" airline {{{
+let g:airline_theme = 'cosme'
+" }}}
+
 " ale {{{
 " ====================================================================================================
 let g:ale_lint_on_enter = 0
@@ -347,8 +349,8 @@ let g:ale_linters = {
 let g:template_basedir=expand('~/.vim/')
 autocmd User plugin-template-loaded call s:template_keywords()
 function! s:template_keywords()
-	silent! %s/<+DATE+>/\=strftime('%Y-%m-%d')/g
-	silent! %s/<+FILENAME+>/\=expand('%:r')/g
+  silent! %s/<+DATE+>/\=strftime('%Y-%m-%d')/g
+  silent! %s/<+FILENAME+>/\=expand('%:r')/g
 endfunction
 
 autocmd User plugin-template-loaded
