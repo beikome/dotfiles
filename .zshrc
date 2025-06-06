@@ -66,6 +66,17 @@ fignore=(.o .swp lost+found) # 補完で無視する
 # -----------------------------------------------------
 set KEYTIMEOUT=1
 
+# Plugin Manager 
+# -----------------------------------------------------
+SCRIPT_DIR=$HOME/dotfiles
+
+source $SCRIPT_DIR/zsh/config.zsh
+source $SCRIPT_DIR/zsh/plugins.zsh
+
+# Theme
+# -----------------------------------------------------
+eval "$(starship init zsh)"
+
+# Others
+# -----------------------------------------------------
 source ~/.zshenv
-
-
