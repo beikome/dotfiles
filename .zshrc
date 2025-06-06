@@ -5,23 +5,6 @@ colors
 
 # Prompt
 # -------------------------------------
-zsh_prompt_color='blue'
-function prompt {
-  local C_USERHOST="%{$bg[black]$fg[$zsh_prompt_color]%}"
-  local C_PROMPT="%{$fg[$zsh_prompt_color]%}"
-  local C_PRE="%{$reset_color%}%{$fg[$zsh_prompt_color]%}"
-  local C_CMD="%{$reset_color%}%{$fg[white]%}"
-  local C_RIGHT="%{$bg[black]%}%{$fg[white]%}"
-  local C_DEFAULT="%{$reset_color%}"
-  PROMPT=$C_USERHOST"%S%n@%m:%~ %s$C_PRE "$1"
-"$C_PROMPT"✫ "$C_CMD
-  RPROMPT="%S"$C_RIGHT" %D{%d %a} %* %s"$C_CMD
-  # keep a few blank lines at the bottom
-  echo -n -e "\n\n\n\033[3A"
-}
-
-prompt ""
-POSTEDIT=`echotc se`
 setopt prompt_subst # use colors in prompt
 unsetopt promptcr
 
@@ -55,7 +38,6 @@ fi
 alias mv='mv -i'
 alias rm='rm -i'
 alias quit='exit'
-alias ':q'='exit'
 alias w3m='w3m -O ja_JP.UTF-8'
 
 # ls colors in completion
